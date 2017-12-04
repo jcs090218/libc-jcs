@@ -1,0 +1,16 @@
+# ========================================================================
+# $File: Update_Log.txt $
+# $Date: 2017-12-04 17:45:01 $
+# $Revision: $
+# $Creator: Jen-Chieh Shen $
+# $Notice: See LICENSE.txt for modification and distribution information
+#                   Copyright © 2017 by Shen, Jen-Chieh $
+# ========================================================================
+
+
+2017-12-04
+* jcs_debug implemented. (libc-jcs)
+* jcs_util implemented. (libc-jcs)
+* jcs_defines implemented. (libc-jcs)
+* Setup test project. (libc-jcs)
+* First setup project. (libc-jcs)
