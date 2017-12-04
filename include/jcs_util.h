@@ -11,6 +11,13 @@
 
 
 /**
+ * @func jcs_get_current_dir
+ * @brief Get the current directory's file path.
+ * @param { char } cwd : Char pointer to store..
+ */
+void jcs_get_current_dir(char* str_ptr, size_t size);
+
+/**
  * @func jcs_safe_create_dir
  * @brief Safe way to create directory.
  * @param { char } filePath : file path.

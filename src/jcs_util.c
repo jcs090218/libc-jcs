@@ -14,8 +14,19 @@
  * @struct stat
  * @brief State to check if the directory exists.
  */
-struct stat rtc_st = {0};
+struct stat jcs_st = {0};
 
+
+/**
+ * @func jcs_get_current_dir
+ * @brief Get the current directory's file path.
+ * @param { char } cwd : Char pointer to store..
+ */
+void jcs_get_current_dir(char* str_ptr, size_t size) {
+    if (getcwd(str_ptr, size) == NULL)
+        return;
+    
+}
 
 /**
  * @func jcs_safe_create_dir
@@ -23,7 +34,7 @@ struct stat rtc_st = {0};
  * @param { char } filePath : file path.
  */
 void jcs_safe_create_dir(char* filePath, int mod) {
-    if (stat(filePath, &rtc_st) == -1) {
+    if (stat(filePath, &jcs_st) == -1) {
         mkdir(filePath, mod);
     }
 }
@@ -35,7 +46,7 @@ void jcs_safe_create_dir(char* filePath, int mod) {
  * @return { bool } : ture, exists. false, not exists.
  */
 bool jcs_dir_exists(char *filePath) {
-    if (stat(filePath, &rtc_st) == -1)
+    if (stat(filePath, &jcs_st) == -1)
         return false;
     return true;
 }
