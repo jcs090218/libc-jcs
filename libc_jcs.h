@@ -20,9 +20,11 @@
 #include <unistd.h>
 #include <errno.h>
 #include <stdbool.h>
+#include <stdarg.h>
 
 /* Core */
-#include "./include/jcs_util.h"
 #include "./include/jcs_defines.h"
+#include "./include/jcs_debug.h"
+#include "./include/jcs_util.h"
 
 #endif /* __LIBC_JCS_H__ */
