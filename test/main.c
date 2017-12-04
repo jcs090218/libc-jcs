@@ -19,7 +19,15 @@
  */
 int main(int argc, char *argv[]) {
 
-    printf("libc-jcs test start..");
+    printf("libc-jcs test start..\n");
+
+    char current_dir[1024];
+    jcs_get_current_dir(current_dir, sizeof(current_dir));
+
+    printf("\n\nCurrent working dir: %s\n\n", current_dir);
+
+    jcs_log("Hello World\n");
+
 
     /* --------------- */
     return 0;

@@ -62,7 +62,7 @@ ASM_FLAGS	  =
 # disassemble flags
 DASM_FLAGS	  = -D
 # compile flags
-C_FLAGS		  = -Wall
+C_FLAGS		  = -Wall -fPIC -mcmodel=large
 # linker flags
 LD_FLAGS	  = -L
 # include flags
@@ -123,7 +123,7 @@ ASMDEP := $(patsubst %.asm,$(DEPDIR)/%.d,$(ASMSRC))
 .PHONY : build compile clean realclean
 
 build :
-	$(CC) $(GSRC) \
+	$(CC) $(C_FLAGS) $(GSRC) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
 	$(LD_FLAGS) $(STATIC_LIB_PATH) \
 	$(OUTPUT_FLAGS) $(BIN_DIR)/$(BIN_NAME)
