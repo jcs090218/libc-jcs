@@ -79,7 +79,8 @@ ALIB  = libc-jcs.a
 SOLIB = libc-jcs.so
 
 ### Source Path ###
-SOURCE_PATH		= $(ROOT_DIR)/test
+SOURCE_PATH		= $(ROOT_DIR)/src
+MAIN_PATH		= $(ROOT_DIR)/test
 
 ### Include Path ###
 INCLUDE_PATH   = $(ROOT_DIR)/include
@@ -93,22 +94,26 @@ SHARED_LIB_PATH	 := $(ROOT_DIR)/src
 SHARED_LIB_PATHS := $(wildcard $(SHARED_LIB_PATH)/*)
 
 ### All Source ###
+# main source
+MAINSRC := $(wildcard $(MAIN_PATH)/*.asm $(MAIN_PATH)/*.c $(MAIN_PATH)/*.cpp)
 # asm source
-ASMSRC := $(wildcard $(SOURCE_PATH)/*.asm)
+ASMSRC	:= $(wildcard $(SOURCE_PATH)/*.asm)
 # c/c++ source
-GSRC   := $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp)
-# static link library
-ASRC   := $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(STATIC_LIB_PATH)/*.c $(STATIC_LIB_PATH)/*.cpp)
-# shared link library
-SOSRC  := $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(SHARED_LIB_PATH)/*.c $(SHARED_LIB_PATH)/*.cpp)
+GSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp)
+# static link library source
+ASRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(STATIC_LIB_PATH)/*.c $(STATIC_LIB_PATH)/*.cpp)
+# shared link library source
+SOSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(SHARED_LIB_PATH)/*.c $(SHARED_LIB_PATH)/*.cpp)
 
 ### objs ###
+# main object file
+MAINOBJ := $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(MAINSRC)))
 # list of object files
-OBJS   := $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(GSRC)))
+OBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(GSRC)))
 # .a object files
-AOBJS  := $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(ASRC)))
+AOBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(ASRC)))
 # .so object files
-SOOBJS := $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(SOSRC)))
+SOOBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(SOSRC)))
 
 ### ASM objs ###
 ASMOBJS := $(subst .asm,.o,$(ASMSRC))
@@ -118,24 +123,26 @@ DEPDIR := $(ROOT_DIR)/mkdepGDEP	  := $(patsubst %.c,$(DEPDIR)/%.d,$(patsubst %.c
 ASMDEP := $(patsubst %.asm,$(DEPDIR)/%.d,$(ASMSRC))
 
 
-.PHONY : build compile clean realclean
+.PHONY : build compile clean realclean test
 
+test :
+	echo "Test command..."
 
 build :
-	$(CC) $(GSRC) \
+	$(CC) $(GSRC) $(MAINSRC) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
 	$(LD_FLAGS) $(STATIC_LIB_PATH) \
 	$(OUTPUT_FLAGS) $(BIN_DIR)/$(BUILD_NAME)
 
 # compile all the source file to object file.
-compile : $(OBJS) $(AOBJS) $(SOOBJS)
+compile : $(MAINOBJ) $(OBJS) $(AOBJS) $(SOOBJS)
 
 # Clean the project.
 clean :
-	rm -f $(OBJS) $(LOBJS)
+	rm -f $(MAINOBJ) $(OBJS) $(LOBJS)
 
 realclean :
-	rm -f $(OBJS) $(LOBJS) $(KASMOBJS) $(LASMOBJS) $(ALIB) $(SOLIB)
+	rm -f $(MAINOBJ) $(OBJS) $(LOBJS) $(KASMOBJS) $(LASMOBJS) $(ALIB) $(SOLIB)
 
 # include dependencies.
 -include $(GDEP)
