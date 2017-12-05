@@ -18,7 +18,6 @@
  * @return { int } : 0, exit success. -1, exit failure.
  */
 int main(int argc, char *argv[]) {
-
     printf("libc-jcs test start..\n");
 
     char current_dir[1024];
@@ -26,10 +25,22 @@ int main(int argc, char *argv[]) {
 
     printf("\n\nCurrent working dir: %s\n\n", current_dir);
 
-    jcs_log("Hello World\n");
-    jcs_error("Hello World\n");
-    jcs_warning("Hello World\n");
-    jcs_error("Hello World\n");
+
+    char *filePath = "./hello.txt";
+
+    jcs_write_to_file(filePath, "Hello ");
+    jcs_append_to_file(filePath, "World!~\n cool");
+
+    jcs_print_file(filePath);
+
+    char* buffer;
+    buffer = jcs_read_file(filePath);
+
+    printf("\nBuffer content: %s\n", buffer);
+
+    jcs_write_to_file(filePath, buffer);
+
+    free(buffer);
 
     /* --------------- */
     return 0;
