@@ -14,6 +14,7 @@
  * @func jcs_get_current_dir
  * @brief Get the current directory's file path.
  * @param { char } cwd : Char pointer to store..
+ * @param { size_t } size : size of the buffer.
  */
 void jcs_get_current_dir(char* str_ptr, size_t size);
 
