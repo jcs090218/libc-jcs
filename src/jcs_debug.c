@@ -9,6 +9,7 @@
 
 #include "../libc_jcs.h"
 
+
 /**
  * @func jcs_vlog
  * @brief Log out using JCS lib format.
@@ -16,10 +17,10 @@
  * @param { va_list } argp : Arguments.
  */
 PRIVATE void jcs_vlog(const char *fmt, va_list argp) {
-    fprintf(stdout, JCS_ANSI_COLOR_GREEN "** \n");
-    fprintf(stdout, "* Log - ");
+    jcs_printf(JCS_ANSI_COLOR_GREEN "** \n");
+    jcs_printf("* Log - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "** \n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -29,10 +30,10 @@ PRIVATE void jcs_vlog(const char *fmt, va_list argp) {
  * @param { va_list } argp : Arguments list.
  */
 PRIVATE void jcs_verror(const char *fmt, va_list argp) {
-    fprintf(stdout, JCS_ANSI_COLOR_RED "** \n");
-    fprintf(stdout, "* Error - ");
+    jcs_printf(JCS_ANSI_COLOR_RED "** \n");
+    jcs_printf("* Error - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "** \n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -42,10 +43,10 @@ PRIVATE void jcs_verror(const char *fmt, va_list argp) {
  * @param { va_list } argp : Arguments list.
  */
 PRIVATE void jcs_vwarning(const char *fmt, va_list argp) {
-    fprintf(stdout, JCS_ANSI_COLOR_YELLOW "** \n");
-    fprintf(stdout, "* Warning - ");
+    jcs_printf(JCS_ANSI_COLOR_YELLOW "** \n");
+    jcs_printf("* Warning - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "**\n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("**\n" JCS_ANSI_COLOR_RESET);
 }
 
 
