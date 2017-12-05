@@ -29,5 +29,6 @@
 #include "./include/jcs_debug.h"
 #include "./include/jcs_util.h"
 #include "./include/jcs_string.h"
+#include "./include/jcs_file.h"
 
 #endif /* __LIBC_JCS_H__ */
