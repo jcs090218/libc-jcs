@@ -27,7 +27,9 @@ int main(int argc, char *argv[]) {
     printf("\n\nCurrent working dir: %s\n\n", current_dir);
 
     jcs_log("Hello World\n");
-
+    jcs_error("Hello World\n");
+    jcs_warning("Hello World\n");
+    jcs_error("Hello World\n");
 
     /* --------------- */
     return 0;
