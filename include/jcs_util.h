@@ -34,15 +34,6 @@ void jcs_safe_create_dir(char* filePath, int mod);
 bool jcs_dir_exists(char *filePath);
 
 /**
- * @func jcs_strcmp
- * @brief Compare two string.
- * @param { char } str1 : string 1.
- * @param { char } str2 : string 2.
- * @return { bool } : true, if the equal. false, vice versa.
- */
-bool jcs_strcmp(char *str1, char *str2);
-
-/**
  * @func jcs_is_safe_command
  * @brief Check if the command is safe to use.
  * @param { int } commandc : command count.

@@ -53,19 +53,6 @@ bool jcs_dir_exists(char *filePath) {
 }
 
 /**
- * @func jcs_strcmp
- * @brief Function description here..
- * @param { char } str1 : Param desc here..
- * @param { char } str2 : Param desc here..
- * @return { bool } : Returns description here..
- */
-bool jcs_strcmp(char *str1, char *str2) {
-    if (strcmp(str1, str2) == 0)
-        return true;
-    return false;
-}
-
-/**
  * @func jcs_is_safe_command
  * @brief Check if the command is safe to use.
  * @param { int } commandc : command count.
