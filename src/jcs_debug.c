@@ -16,10 +16,10 @@
  * @param { va_list } argp : Arguments.
  */
 PRIVATE void jcs_vlog(const char *fmt, va_list argp) {
-    fprintf(stdout, "** \n");
+    fprintf(stdout, JCS_ANSI_COLOR_GREEN "** \n");
     fprintf(stdout, "* Log - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "** \n");
+    fprintf(stdout, "** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -29,10 +29,10 @@ PRIVATE void jcs_vlog(const char *fmt, va_list argp) {
  * @param { va_list } argp : Arguments list.
  */
 PRIVATE void jcs_verror(const char *fmt, va_list argp) {
-    fprintf(stdout, "** \n");
+    fprintf(stdout, JCS_ANSI_COLOR_RED "** \n");
     fprintf(stdout, "* Error - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "** \n");
+    fprintf(stdout, "** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -42,10 +42,10 @@ PRIVATE void jcs_verror(const char *fmt, va_list argp) {
  * @param { va_list } argp : Arguments list.
  */
 PRIVATE void jcs_vwarning(const char *fmt, va_list argp) {
-    fprintf(stdout, "** \n");
+    fprintf(stdout, JCS_ANSI_COLOR_YELLOW "** \n");
     fprintf(stdout, "* Warning - ");
     vfprintf(stdout, fmt, argp);
-    fprintf(stdout, "**\n");
+    fprintf(stdout, "**\n" JCS_ANSI_COLOR_RESET);
 }
 
 
