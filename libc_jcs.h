@@ -25,6 +25,7 @@
 /* Core */
 #include "./include/jcs_defines.h"
 #include "./include/jcs_color.h"
+#include "./include/jcs_print.h"
 #include "./include/jcs_debug.h"
 #include "./include/jcs_util.h"
 
