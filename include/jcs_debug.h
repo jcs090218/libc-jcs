@@ -14,33 +14,8 @@
  * URL(jenchieh): http://c-faq.com/varargs/handoff.html
  */
 
-
-#include "../libc_jcs.h"
-
-
-/**
- * @func jcs_vlog
- * @brief Log out using JCS lib format.
- * @param { char } fmt : format string.
- * @param { va_list } argp : Arguments list.
- */
-PRIVATE void jcs_vlog(const char *fmt, va_list argp);
-
-/**
- * @func jcs_verror
- * @brief Error output using JCS lib format.
- * @param { char } fmt : format string.
- * @param { va_list } argp : Arguments list.
- */
-PRIVATE void jcs_verror(const char *fmt, va_list argp);
-
-/**
- * @func jcs_vwarning
- * @brief Warning output using JCS lib format.
- * @param { char } fmt : format string.
- * @param { va_list } argp : Arguments list.
- */
-PRIVATE void jcs_vwarning(const char *fmt, va_list argp);
+#include <stdio.h>
+#include <stdarg.h>
 
 
 /**
