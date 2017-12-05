@@ -1,12 +1,14 @@
 # ========================================================================
 # $File: Makefile $
-# $Date: 2017-12-04 08:00:03 $
+# $Date: 2017-12-05 15:05:49 $
 # $Revision: $
 # $Creator: Jen-Chieh Shen $
 # $Notice: See LICENSE.txt for modification and distribution information
 #					Copyright © 2017 by Shen, Jen-Chieh $
 # ========================================================================
 
+
+### Library Makefile Template ###
 
 #----------------------------------------------
 # JayCeS project directories preference.
@@ -32,14 +34,14 @@ VER		   = 1.0.1
 ROOT_DIR   = .
 # Enter the name of the build file. could either be a dynamic
 # link, executable, etc.
-BUILD_NAME = libc-jcs
+BIN_NAME = libc-jcs
 
 ### Directories ###
 # Build executable directory.
 BIN_DIR = $(ROOT_DIR)/build/bin
-# Build static library directory.
+# Build library directory.
 ALIB_DIR = $(ROOT_DIR)/build/alib
-# Build shared library directory.
+# Build library directory.
 SOLIB_DIR = $(ROOT_DIR)/build/solib
 
 ### Commands ###
@@ -54,7 +56,7 @@ LD	 = ld
 # compile lib file commands
 AR	 = ar
 
-### Flags ###
+### Flags ##
 # assemble flags
 ASM_FLAGS	  =
 # disassemble flags
@@ -79,19 +81,19 @@ ALIB  = libc-jcs.a
 SOLIB = libc-jcs.so
 
 ### Source Path ###
-SOURCE_PATH		= $(ROOT_DIR)/src
 MAIN_PATH		= $(ROOT_DIR)/test
+SOURCE_PATH		= $(ROOT_DIR)/src
 
 ### Include Path ###
 INCLUDE_PATH   = $(ROOT_DIR)/include
 INCLUDE_PATHS  = $(wildcard $(INCLUDE_PATH)/*)
 
 ### Library path ###
-STATIC_LIB_PATH	 = $(ROOT_DIR)/src
-STATIC_LIB_PATHS = $(wildcard $(STATIC_LIB_PATH)/*)
+A_LIB_PATH	 = $(ROOT_DIR)/lib/alib
+A_LIB_PATHS = $(wildcard $(A_LIB_PATH)/*)
 
-SHARED_LIB_PATH	 := $(ROOT_DIR)/src
-SHARED_LIB_PATHS := $(wildcard $(SHARED_LIB_PATH)/*)
+SO_LIB_PATH	 := $(ROOT_DIR)/lib/solib
+SO_LIB_PATHS := $(wildcard $(SO_LIB_PATH)/*)
 
 ### All Source ###
 # main source
@@ -101,9 +103,9 @@ ASMSRC	:= $(wildcard $(SOURCE_PATH)/*.asm)
 # c/c++ source
 GSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp)
 # static link library source
-ASRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(STATIC_LIB_PATH)/*.c $(STATIC_LIB_PATH)/*.cpp)
+ASRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(A_LIB_PATH)/*.c $(A_LIB_PATH)/*.cpp)
 # shared link library source
-SOSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(SHARED_LIB_PATH)/*.c $(SHARED_LIB_PATH)/*.cpp)
+SOSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(SO_LIB_PATH)/*.c $(SO_LIB_PATH)/*.cpp)
 
 ### objs ###
 # main object file
@@ -131,8 +133,9 @@ test :
 build :
 	$(CC) $(GSRC) $(MAINSRC) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
-	$(LD_FLAGS) $(STATIC_LIB_PATH) \
-	$(OUTPUT_FLAGS) $(BIN_DIR)/$(BUILD_NAME)
+	$(LD_FLAGS) $(A_LIB_PATH) \
+	$(OUTPUT_FLAGS) $(BIN_DIR)/$(BIN_NAME)
+
 
 # compile all the source file to object file.
 compile : $(MAINOBJ) $(OBJS) $(AOBJS) $(SOOBJS)
@@ -154,9 +157,9 @@ program_main.o : program_main.c
 
 # generate static link library.
 $(ALIB) : $(AOBJS)
-	$(AR) $(AR_FLAGS) $(ALIB_DIR)/$@ $<
+	$(AR) $(AR_FLAGS) $(ALIB_DIR)/$@ $^
 
 # generate shared link library.
 $(SOLIB) : $(SOOBJS)
 	$(CC) $(SOR_FLAGS) \
-	$(OUTPUT_FLAGS) $(SOLIB_DIR)/$@ $<
+	$(OUTPUT_FLAGS) $(SOLIB_DIR)/$@ $^
