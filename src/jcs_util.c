@@ -23,9 +23,10 @@ struct stat jcs_st = {0};
  * @param { char } cwd : Char pointer to store..
  */
 void jcs_get_current_dir(char* str_ptr, size_t size) {
-    if (getcwd(str_ptr, size) == NULL)
+    if (getcwd(str_ptr, size) != NULL)
         return;
-    
+
+    jcs_log("Failed to get current directory for some reason...");
 }
 
 /**
