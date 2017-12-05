@@ -11,6 +11,7 @@
 2017-12-05
 * jcs_color implemented. (libc-jcs)
 * jcs_print implemented. (libc-jcs)
+* jcs_file implemented. (libc-jcs)
 
 2017-12-04
 * jcs_debug implemented. (libc-jcs)
