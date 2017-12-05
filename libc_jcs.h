@@ -28,5 +28,6 @@
 #include "./include/jcs_print.h"
 #include "./include/jcs_debug.h"
 #include "./include/jcs_util.h"
+#include "./include/jcs_string.h"
 
 #endif /* __LIBC_JCS_H__ */
