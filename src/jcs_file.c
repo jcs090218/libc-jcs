@@ -85,6 +85,12 @@ size_t jcs_get_file_size(const char *filename) {
  * @param { char } filePath : file path.
  * @param { char } buffer : buffer to store content.
  * @return { char } : buffer, this need to be free.
+ *
+ * @attention buffer, this need to be free.
+ * @example
+ * char* buffer;
+ * buffer = jcs_read_file(filePath);
+ * free(buffer);
  */
 char* jcs_read_file(const char *filePath) {
     FILE *fp;
@@ -96,8 +102,13 @@ char* jcs_read_file(const char *filePath) {
     len = ftell(fp);
     rewind(fp);
 
-    buffer = (char*)malloc(len * sizeof(char));
+    buffer = (char*)malloc((len * sizeof(char)) + 1);
     fread(buffer, 1, len, fp);
+
+    /* Add null terminator. */
+    /* buffer[len] = '\0'; */
+    /* OR */
+    *(buffer + len) = '\0';
 
     fclose(fp);
     return buffer;
