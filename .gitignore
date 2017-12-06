@@ -55,3 +55,45 @@ GTAGS
 
 # null file
 NUL
+
+# visual studio env.
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.opt
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# sql
+*.mdf
+*.ldf
+
+# static lib
+*.lib
+*.lai
+*.la
+*.a
+
+# dynamic lib
+*.dll
+*.dylib
+
+# executable
+*.exe
+*.out
+*.app
+
+# monodevelop / xamarin studio env.
+*.userprefs
