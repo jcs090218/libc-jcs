@@ -12,6 +12,8 @@
 * Done read file functionality in jcs_file file. (libc-jcs)
 * Done println functionality in jcs_print file. (libc-jcs)
 * jcs_net implemented. (libc-jcs)
+* Add CMake. (libc-jcs)
+* Add visual studio project compatible. (libc-jcs)
 
 2017-12-05
 * jcs_color implemented. (libc-jcs)
