@@ -17,8 +17,15 @@
 /**
  * @func jcs_printf
  * @brief JCS version of printf.
- * @param { char } fmt : Arguments.
+ * @param { char } fmt : format string.
  */
 void jcs_printf(const char *fmt, ...);
+
+/**
+ * @func jcs_println
+ * @brief Print line.
+ * @param { char } fmt : formant string.
+ */
+void jcs_println(const char *fmt, ...);
 
 #endif /* __JCS_PRINT_H__ */

@@ -31,3 +31,16 @@ void jcs_printf(const char *fmt, ...) {
     jcs_vprintf(fmt, argp);
     va_end(argp);
 }
+
+/**
+ * @func jcs_println
+ * @brief Print line.
+ * @param { char } fmt : formant string.
+ */
+void jcs_println(const char *fmt, ...) {
+    va_list argp;
+    va_start(argp, fmt);
+    jcs_vprintf(fmt, argp);
+    va_end(argp);
+    jcs_printf("\n");
+}
