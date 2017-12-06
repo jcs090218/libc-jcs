@@ -16,6 +16,16 @@
 #define PUBLIC
 #define PRIVATE static
 
+/**
+ * @def JCS_HAS_ERROR
+ * @brief Use to check if has an error flag.
+ */
+#define JCS_HAS_ERROR -1
+/**
+ * @def JCS_NO_ERROR
+ * @brief No error flag, meaning is safe.
+ */
+#define JCS_NO_ERROR 0
 
 typedef int8_t int8;
 typedef int16_t int16;
