@@ -20,7 +20,7 @@ PRIVATE void jcs_vlog(const char *fmt, va_list argp) {
     jcs_printf(JCS_ANSI_COLOR_GREEN "** \n");
     jcs_printf("* Log - ");
     vfprintf(stdout, fmt, argp);
-    jcs_printf("** \n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("\n** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -33,7 +33,7 @@ PRIVATE void jcs_verror(const char *fmt, va_list argp) {
     jcs_printf(JCS_ANSI_COLOR_RED "** \n");
     jcs_printf("* Error - ");
     vfprintf(stdout, fmt, argp);
-    jcs_printf("** \n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("\n** \n" JCS_ANSI_COLOR_RESET);
 }
 
 /**
@@ -46,7 +46,7 @@ PRIVATE void jcs_vwarning(const char *fmt, va_list argp) {
     jcs_printf(JCS_ANSI_COLOR_YELLOW "** \n");
     jcs_printf("* Warning - ");
     vfprintf(stdout, fmt, argp);
-    jcs_printf("**\n" JCS_ANSI_COLOR_RESET);
+    jcs_printf("\n**\n" JCS_ANSI_COLOR_RESET);
 }
 
 
