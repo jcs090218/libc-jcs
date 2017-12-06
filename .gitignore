@@ -1,3 +1,7 @@
+# Ignore hidden directories.
+/.git
+/.vs
+
 # Ignore directories.
 /build
 
