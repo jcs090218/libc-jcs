@@ -18,9 +18,7 @@
  * @return { int } : 0, exit success. -1, exit failure.
  */
 int main(int argc, char *argv[]) {
-    printf("libc-jcs test start..\n");
-
-    
+    jcs_println("libc-jcs test start..");
 
     /* --------------- */
     return 0;
