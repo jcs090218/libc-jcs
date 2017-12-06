@@ -12,10 +12,16 @@
 /* Sys */
 #include <sys/stat.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 /* Network */
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
+#include <fcntl.h>
+
+/* Database */
+#include <netdb.h>
 
 /* Standard */
 #include <stdio.h>
@@ -25,6 +31,7 @@
 #include <errno.h>
 #include <stdbool.h>
 #include <stdarg.h>
+#include <signal.h>
 
 /* Core */
 #include "./include/jcs_defines.h"
@@ -34,5 +41,6 @@
 #include "./include/jcs_util.h"
 #include "./include/jcs_string.h"
 #include "./include/jcs_file.h"
+#include "./include/jcs_net.h"
 
 #endif /* __LIBC_JCS_H__ */
