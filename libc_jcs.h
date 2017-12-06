@@ -13,6 +13,10 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+/* Network */
+#include <sys/socket.h>
+#include <netinet/in.h>
+
 /* Standard */
 #include <stdio.h>
 #include <stdlib.h>
