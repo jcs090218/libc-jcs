@@ -8,6 +8,10 @@
 # ========================================================================
 
 
+2017-12-07
+* Remvoe visual studio project compatible, since the project uses
+ cross compiler. (libc-jcs)
+
 2017-12-06
 * Done read file functionality in jcs_file file. (libc-jcs)
 * Done println functionality in jcs_print file. (libc-jcs)
