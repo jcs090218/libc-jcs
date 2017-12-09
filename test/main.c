@@ -20,6 +20,14 @@
 int main(int argc, char *argv[]) {
     jcs_println("libc-jcs test start..");
 
+    if (jcs_file_exists("hello.txt")) {
+        jcs_println("File exists");
+    } else {
+        jcs_println("File not exists");
+    }
+
+    jcs_safe_create_dir_recursive("alright/cool", 700);
+
     /* --------------- */
     return 0;
 }
