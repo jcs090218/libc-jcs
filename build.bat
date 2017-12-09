@@ -25,18 +25,13 @@ make build
 
 echo.
 :: Build `client_main.c'
-make buildclient
+::make buildclient
 
 echo.
 :: Build `server_main.c'
-make buildserver
+::make buildserver
 cd ..
 
-echo.
-echo.
-::make build
-echo.
-echo.
 
 :: Build static library.
 echo.

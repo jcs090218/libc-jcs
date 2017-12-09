@@ -27,20 +27,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <errno.h>
 #include <stdbool.h>
 #include <stdarg.h>
 #include <signal.h>
+#include <stddef.h>
+#include <unistd.h>
+#include <errno.h>
+#include <limits.h>
 
 /* Core */
 #include "./include/jcs_defines.h"
 #include "./include/jcs_color.h"
 #include "./include/jcs_print.h"
 #include "./include/jcs_debug.h"
-#include "./include/jcs_util.h"
+#include "./include/jcs_dir.h"
 #include "./include/jcs_string.h"
 #include "./include/jcs_file.h"
 #include "./include/jcs_net.h"
+#include "./include/jcs_util.h"
 
 #endif /* __LIBC_JCS_H__ */
