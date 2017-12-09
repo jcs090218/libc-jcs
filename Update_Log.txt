@@ -8,6 +8,10 @@
 # ========================================================================
 
 
+2017-12-09
+* Add jcs_file functionalities. (libc-jcs)
+* jcs_dir implemented. (libc-jcs)
+
 2017-12-07
 * Remvoe visual studio project compatible, since the project uses
  cross compiler. (libc-jcs)
