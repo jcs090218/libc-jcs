@@ -11,48 +11,16 @@
 
 
 /**
- * @struct stat
- * @brief State to check if the directory exists.
- */
-struct stat jcs_st = {0};
-
-
-/**
  * @func jcs_get_current_dir
  * @brief Get the current directory's file path.
  * @param { char } cwd : Char pointer to store..
  * @param { size_t } size : size of the buffer.
  */
-void jcs_get_current_dir(char* str_ptr, size_t size) {
+void jcs_get_current_dir(char* str_ptr, const size_t size) {
     if (getcwd(str_ptr, size) != NULL)
         return;
 
     jcs_log("Failed to get current directory for some reason...");
-}
-
-/**
- * @func jcs_safe_create_dir
- * @brief Safe way to create directory.
- * @param { char } filePath : file path.
- */
-void jcs_safe_create_dir(char* filePath, int mod) {
-    if (!jcs_dir_exists(filePath)) {
-        mkdir(filePath, mod);
-    }
-
-    jcs_log("Failed to create directory, file already exists...");
-}
-
-/**
- * @func jcs_dir_exists
- * @brief Check if directory exists.
- * @param { char } filePath : file path to check.
- * @return { bool } : ture, exists. false, not exists.
- */
-bool jcs_dir_exists(char *filePath) {
-    if (stat(filePath, &jcs_st) == -1)
-        return false;
-    return true;
 }
 
 /**
@@ -62,7 +30,7 @@ bool jcs_dir_exists(char *filePath) {
  * @param { char } command_id : command index.
  * @return { bool } : true, is safe. false, not safe.
  */
-bool jcs_is_safe_command(int commandc, int command_id) {
+bool jcs_is_safe_command(const int commandc, const int command_id) {
     if (commandc > command_id)
         return true;
     return false;

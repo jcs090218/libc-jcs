@@ -52,4 +52,12 @@ char* jcs_read_file(const char *filePath);
  */
 size_t jcs_get_file_size(const char *filePath);
 
+/**
+ * @func jcs_file_exists
+ * @brief Check if the file exists.
+ * @param { char } filePath : file path.
+ * @return { bool } : true, file exists. false, file does not exists.
+ */
+bool jcs_file_exists(const char *filePath);
+
 #endif /* __JCS_FILE_H__ */

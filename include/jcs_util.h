@@ -9,6 +9,8 @@
  */
 #define __JCS_UTIL_H__
 
+#include <stddef.h>
+
 
 /**
  * @func jcs_get_current_dir
@@ -16,23 +18,7 @@
  * @param { char } cwd : Char pointer to store..
  * @param { size_t } size : size of the buffer.
  */
-void jcs_get_current_dir(char* str_ptr, size_t size);
-
-/**
- * @func jcs_safe_create_dir
- * @brief Safe way to create directory.
- * @param { char } filePath : file path.
- * @param { int } mod : directory mode.
- */
-void jcs_safe_create_dir(char* filePath, int mod);
-
-/**
- * @func jcs_dir_exists
- * @brief Check if directory exists.
- * @param { char } filePath : file path to check.
- * @return { bool } : ture, exists. false, not exists.
- */
-bool jcs_dir_exists(char *filePath);
+void jcs_get_current_dir(char* str_ptr, const size_t size);
 
 /**
  * @func jcs_is_safe_command
@@ -41,6 +27,6 @@ bool jcs_dir_exists(char *filePath);
  * @param { char } command_id : command index.
  * @return { bool } : true, is safe. false, not safe.
  */
-bool jcs_is_safe_command(int commandc, int command_id);
+bool jcs_is_safe_command(const int commandc, const int command_id);
 
 #endif /* __JCS_UTIL_H__ */
