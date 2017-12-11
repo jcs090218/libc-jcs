@@ -62,7 +62,7 @@ ASM_FLAGS	  =
 # disassemble flags
 DASM_FLAGS	  = -D
 # compile flags
-C_FLAGS		  = -Wall
+C_FLAGS		  = -lcurl
 # linker flags
 LD_FLAGS	  = -L
 # include flags
@@ -162,4 +162,4 @@ $(ALIB) : $(AOBJS)
 # generate shared link library.
 $(SOLIB) : $(SOOBJS)
 	$(CC) $(SOR_FLAGS) \
-	$(OUTPUT_FLAGS) $(SOLIB_DIR)/$@ $^
+	$(OUTPUT_FLAGS) $(SOLIB_DIR)/$@ $^ $(C_FLAGS)
