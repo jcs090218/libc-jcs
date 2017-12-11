@@ -9,6 +9,19 @@
 
 #include "../libc_jcs.h"
 
+
+/**
+ * @func jcs_is_valid_ip_address
+ * @brief Check if the ip address valid format.
+ * @param { char } ip_addr : ip address.
+ * @return { bool } : true, valid ip address. false, invalid ip address.
+ */
+bool jcs_is_valid_ip_address(const char *ip_addr) {
+    struct sockaddr_in sa;
+    int result = inet_pton(AF_INET, ip_addr, &(sa.sin_addr));
+    return result != 0;
+}
+
 /**
  * @func jcs_create_server
  * @brief Build the server socket.
