@@ -18,7 +18,7 @@ SERVER_BIN = libc-jcs-server
 ### Flags ##
 ASM_FLAGS	  =
 DASM_FLAGS	  = -D
-C_FLAGS		  = -Wall
+C_FLAGS		  = -Wall -lcurl
 LD_FLAGS	  = -L
 INCLUDE_FLAGS = -I
 AR_FLAGS	  = rcs
@@ -46,6 +46,7 @@ GSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp)
 
 build :
 	$(CC) $(GSRC) ./main.c \
+	$(C_FLAGS) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
 	$(LD_FLAGS) $(A_LIB_PATH) \
 	$(OUTPUT_FLAGS) $(ROOT_DIR)/build/bin/$(MAIN_BIN)
