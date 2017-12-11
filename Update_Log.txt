@@ -8,6 +8,9 @@
 # ========================================================================
 
 
+2017-12-12
+* Don't log if failed open dir in remove dir recursively function. (libc-jcs)
+
 2017-12-11
 * Make zip command to build scripts. (libc-jcs)
 * Add a lib and so libc to 'realclean' make command. (libc-jcs)
