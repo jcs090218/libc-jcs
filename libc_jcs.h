@@ -20,6 +20,9 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 
+/* URL */
+#include <curl/curl.h>
+
 /* Database */
 #include <netdb.h>
 
@@ -35,6 +38,10 @@
 #include <errno.h>
 #include <limits.h>
 
+/* Others */
+#include <dirent.h>
+
+
 /* Core */
 #include "./include/jcs_defines.h"
 #include "./include/jcs_color.h"
@@ -44,6 +51,7 @@
 #include "./include/jcs_string.h"
 #include "./include/jcs_file.h"
 #include "./include/jcs_net.h"
+#include "./include/jcs_url.h"
 #include "./include/jcs_util.h"
 
 #endif /* __LIBC_JCS_H__ */
