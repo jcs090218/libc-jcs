@@ -109,7 +109,6 @@ bool jcs_safe_remove_dir_recursive(const char* filePath) {
     struct dirent *ent;
 
     if ((dir = opendir(filePath)) == NULL) {
-        jcs_error("Cannot open the target directory..");
         return false;
     }
 
