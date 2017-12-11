@@ -8,6 +8,10 @@
 # ========================================================================
 
 
+2017-12-11
+* Make zip command to build scripts. (libc-jcs)
+* Add a lib and so libc to 'realclean' make command. (libc-jcs)
+
 2017-12-09
 * Add jcs_file functionalities. (libc-jcs)
 * jcs_dir implemented. (libc-jcs)
