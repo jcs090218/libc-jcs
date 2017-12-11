@@ -57,6 +57,8 @@ PRIVATE void jcs_vwarning(const char *fmt, va_list argp) {
  * @param { va_list } argp : Arguments.
  */
 void jcs_log(const char *fmt, ...) {
+    if (!jcs_is_debug_mode())
+        return;
     va_list argp;
     va_start(argp, fmt);
     jcs_vlog(fmt, argp);
@@ -69,6 +71,8 @@ void jcs_log(const char *fmt, ...) {
  * @param { char } fmt : format string.
  */
 void jcs_error(const char *fmt, ...) {
+    if (!jcs_is_debug_mode())
+        return;
     va_list argp;
     va_start(argp, fmt);
     jcs_verror(fmt, argp);
@@ -81,6 +85,8 @@ void jcs_error(const char *fmt, ...) {
  * @param { char } fmt : format string.
  */
 void jcs_warning(const char *fmt, ...) {
+    if (!jcs_is_debug_mode())
+        return;
     va_list argp;
     va_start(argp, fmt);
     jcs_vwarning(fmt, argp);
