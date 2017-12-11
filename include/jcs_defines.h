@@ -17,6 +17,12 @@
 #define PRIVATE static
 
 /**
+ * @def JCS_DEBUG
+ * @brief Debug mode or Release mode.
+ */
+#define JCS_DEBUG 1
+
+/**
  * @def JCS_HAS_ERROR
  * @brief Use to check if has an error flag.
  */
