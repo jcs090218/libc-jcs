@@ -11,6 +11,9 @@
 2017-12-11
 * Make zip command to build scripts. (libc-jcs)
 * Add a lib and so libc to 'realclean' make command. (libc-jcs)
+* Impl check valid ip functionality. (libc-jcs)
+* Add debug macro for debug and release version of the library. (libc-jcs)
+* Add remove dir recursively functionalities. (libc-jcs)
 
 2017-12-09
 * Add jcs_file functionalities. (libc-jcs)
