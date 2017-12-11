@@ -145,7 +145,7 @@ clean :
 	rm -f $(MAINOBJ) $(OBJS) $(LOBJS)
 
 realclean :
-	rm -f $(MAINOBJ) $(OBJS) $(LOBJS) $(KASMOBJS) $(LASMOBJS) $(ALIB) $(SOLIB)
+	rm -f $(MAINOBJ) $(OBJS) $(LOBJS) $(KASMOBJS) $(LASMOBJS) $(ALIB_DIR)/$(ALIB) $(SOLIB_DIR)/$(SOLIB)
 
 # include dependencies.
 -include $(GDEP)
