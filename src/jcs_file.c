@@ -11,6 +11,23 @@
 
 
 /**
+ * @func jcs_write_data
+ * @brief Write data to file.
+ * @param { void } ptr : This is the pointer to the array of elements to be written.
+ * @param { size_t } size : This is the size in bytes of each element to be written.
+ * @param { size_t } nmemb : This is the number of elements, each one with a size of size bytes.
+ * @param { FILE } stream : This is the pointer to a FILE object that specifies an output stream.
+ * @return { size_t } : This function returns the total number of
+ *  elements successfully returned as a size_t object, which is
+ *  an integral data type. If this number differs from the nmemb
+ *  parameter, it will show an error.
+ */
+size_t jcs_write_data(void *ptr, size_t size, size_t nmemb, FILE *stream) {
+    size_t written = fwrite(ptr, size, nmemb, stream);
+    return written;
+}
+
+/**
  * @func jcs_write_to_file
  * @brief Simply write something to file.
  * @param { char } filePath : file path.
@@ -40,8 +57,9 @@ void jcs_append_to_file(const char *filePath, const char *str) {
  * @func jcs_print_file
  * @brief Read the file and print it on the screen.
  * @param { char } filePath : file path.
+ * @return { bool } : true, print file success. false, vice versa.
  */
-void jcs_print_file(const char *filePath) {
+bool jcs_print_file(const char *filePath) {
     FILE *fp;
     char *line = NULL;
     size_t len = 0;
@@ -50,8 +68,8 @@ void jcs_print_file(const char *filePath) {
 
     fp = fopen(filePath, "r");
     if (fp == NULL) {
-        jcs_log("Cannot print the with no such a file...");
-        return;
+        jcs_log("Cannot print without the file...");
+        return false;
     }
 
     while ((read = getline(&line, &len, fp)) != -1) {
@@ -62,6 +80,8 @@ void jcs_print_file(const char *filePath) {
 
     if (line)
         free(line);
+
+    return true;
 }
 
 /**
@@ -121,4 +141,27 @@ char* jcs_read_file(const char *filePath) {
  */
 bool jcs_file_exists(const char *filePath) {
     return (access(filePath, F_OK) != -1);
+}
+
+/**
+ * @func jcs_safe_remove_file
+ * @brief Safe way to delete file.
+ * @param { char } file : file path.
+ * @return { bool } : true, delete successfully. false, vice versa.
+ */
+bool jcs_safe_remove_file(const char *file) {
+    int result = remove(file);
+    return !jcs_has_error(result);
+}
+
+/**
+ * @func jcs_is_a_file
+ * @brief Check if the path a file or directory.
+ * @param { char } filePath : file path to check.
+ * @return { bool } : true, is a file. false, is a directory.
+ */
+bool jcs_is_a_file(const char* filePath) {
+    struct stat path_stat;
+    stat(filePath, &path_stat);
+    return (S_ISREG(path_stat.st_mode) != 0);
 }
