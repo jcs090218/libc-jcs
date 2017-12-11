@@ -10,6 +10,7 @@
 #define __JCS_NET_H__
 
 #include <sys/types.h>
+#include <stddef.h>
 
 
 #ifndef SOCKET_ERROR
@@ -20,6 +21,14 @@
 #define SOCKET_ERROR -1
 #endif
 
+
+/**
+ * @func jcs_is_valid_ip_address
+ * @brief Check if the ip address valid format.
+ * @param { char } ip_addr : ip address.
+ * @return { bool } : true, valid ip address. false, invalid ip address.
+ */
+bool jcs_is_valid_ip_address(const char *ip_addr);
 
 /**
  * @func jcs_create_server
