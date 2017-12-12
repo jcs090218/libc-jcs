@@ -24,6 +24,17 @@ int main(int argc, char *argv[]) {
 
     jcs_safe_remove_dir_recursive("./alright/cool");
 
+    jcs_set_conio_terminal_mode();
+
+    while (true) {
+        /* do some work */
+        if (jcs_kbhit()) {
+            jcs_log("Break");
+            break;
+        }
+    }
+    jcs_getch(); /* consume the character */
+
     /* --------------- */
     return 0;
 }
