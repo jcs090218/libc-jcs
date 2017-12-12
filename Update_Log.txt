@@ -10,6 +10,7 @@
 
 2017-12-12
 * Don't log if failed open dir in remove dir recursively function. (libc-jcs)
+* jcs_input implemented. (libc-jcs)
 
 2017-12-11
 * Make zip command to build scripts. (libc-jcs)
