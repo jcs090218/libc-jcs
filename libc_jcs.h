@@ -26,6 +26,9 @@
 /* Database */
 #include <netdb.h>
 
+/* IO */
+#include <termios.h>
+
 /* Standard */
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,6 +50,7 @@
 #include "./include/jcs_color.h"
 #include "./include/jcs_print.h"
 #include "./include/jcs_debug.h"
+#include "./include/jcs_input.h"
 #include "./include/jcs_dir.h"
 #include "./include/jcs_string.h"
 #include "./include/jcs_file.h"
