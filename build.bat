@@ -27,11 +27,11 @@ make build
 
 echo.
 :: Build `client_main.c'
-::make buildclient
+make buildclient
 
 echo.
 :: Build `server_main.c'
-::make buildserver
+make buildserver
 cd ..
 
 
@@ -72,6 +72,11 @@ mkdir "./build/%PROJECT_NAME%/include/include"
 cp -r "./include" "./build/%PROJECT_NAME%/include"
 echo "Done copying include files."
 
+echo "Copy license file.."
+cp "./LICENSE" "./build/%PROJECT_NAME%"
+
+echo "Copy readme file.."
+cp "./README" "./build/%PROJECT_NAME%"
 
 cd build
 echo "Compressing folder..."
