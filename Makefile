@@ -128,7 +128,7 @@ ASMDEP := $(patsubst %.asm,$(DEPDIR)/%.d,$(ASMSRC))
 .PHONY : build compile clean realclean test
 
 test :
-	echo "Test command..."
+	@echo "Test command..."
 
 build :
 	$(CC) $(GSRC) $(MAINSRC) \
@@ -151,9 +151,12 @@ realclean :
 -include $(GDEP)
 -include $(ASMDEP)
 
-# example of compile the program main file.
 program_main.o : program_main.c
 	$(CC) $(C_FLAGS) $(OUTPUT_FLAGS) $@ $<
+
+# compile assembly file to object file.
+$(ASMOBJS) : $(ASMSRC)
+	$(ASM) $< $(ASM_FLAGS) $(OUTPUT_FLAGS) $@
 
 # generate static link library.
 $(ALIB) : $(AOBJS)
