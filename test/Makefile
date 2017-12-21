@@ -53,12 +53,14 @@ build :
 
 buildclient :
 	$(CC) $(GSRC) ./client_main.c \
+	$(C_FLAGS) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
 	$(LD_FLAGS) $(A_LIB_PATH) \
 	$(OUTPUT_FLAGS) $(ROOT_DIR)/build/bin/$(CLIENT_BIN)
 
 buildserver :
 	$(CC) $(GSRC) ./server_main.c \
+	$(C_FLAGS) \
 	$(INCLUDE_FLAGS) $(INCLUDE_PATH) \
 	$(LD_FLAGS) $(A_LIB_PATH) \
 	$(OUTPUT_FLAGS) $(ROOT_DIR)/build/bin/$(SERVER_BIN)
