@@ -8,6 +8,9 @@
 # ========================================================================
 
 
+2017-12-21
+* Add JCSSH package. (libc-jcs)
+
 2017-12-12
 * Don't log if failed open dir in remove dir recursively function. (libc-jcs)
 * jcs_input implemented. (libc-jcs)
