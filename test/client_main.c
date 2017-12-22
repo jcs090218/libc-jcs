@@ -23,7 +23,7 @@
 int main(int argc, char *argv[]) {
     jcs_println("Start the client.");
 
-    int client_fd = jcs_create_client(HOST_NAME, PORT);
+    int client_fd = jcs_create_client(HOST_NAME, PORT, TCP);
 
     char buffer[128];
     char resp[100] = "clientack hello";

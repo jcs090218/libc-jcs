@@ -23,7 +23,7 @@
 int main(int argc, char *argv[]) {
     jcs_println("Start the server.");
 
-    int server_fd = jcs_create_server(PORT, false, 20);
+    int server_fd = jcs_create_server(PORT, TCP, false, 20);
 
     char buffer[20] = "Hi client!";
     char buffer1[100];
