@@ -10,16 +10,6 @@
 #include "../libc_jcs.h"
 
 
-/**
- * @enum JCS_PROTOCAL_TYPE
- * @breif Protocal type.
- */
-enum JCS_PROTOCAL_TYPE {
-    TCP = 0x01,
-    UDP = 0x02
-};
-typedef enum JCS_PROTOCAL_TYPE JCS_PROTOCAL_TYPE;
-
 PRIVATE int jcs_create_socket(JCS_PROTOCAL_TYPE type);
 
 
@@ -50,7 +40,10 @@ bool jcs_is_valid_ip_address(const char *ip_addr) {
  * close(sockfd);  /\* clsoe it. *\/
  * @end_code
  */
-int jcs_create_server(const int port, bool nio, const int max_con) {
+int jcs_create_server(const int port,
+                      JCS_PROTOCAL_TYPE prot_type,
+                      bool nio,
+                      const int max_con) {
     struct sockaddr_in dest;
 
     int sockfd;
@@ -58,7 +51,7 @@ int jcs_create_server(const int port, bool nio, const int max_con) {
     int opt = 1;
 
     /* Creating socket file descriptor. */
-    if ((sockfd = jcs_create_socket(TCP)) == 0) {
+    if ((sockfd = jcs_create_socket(prot_type)) == 0) {
         jcs_error("Failed to create socket..");
         return JCS_HAS_ERROR;
     }
@@ -127,11 +120,13 @@ int jcs_create_server(const int port, bool nio, const int max_con) {
  * close(sockfd);  /\* clsoe it. *\/
  * @end_code
  */
-int jcs_create_client(const char* hostname, const int port) {
+int jcs_create_client(const char* hostname,
+                      const int port,
+                      JCS_PROTOCAL_TYPE prot_type) {
     int sockfd;
     struct sockaddr_in dest;
 
-    if ((sockfd = jcs_create_socket(TCP)) < 0) {
+    if ((sockfd = jcs_create_socket(prot_type)) < 0) {
         jcs_error("Failed to create socket..");
         return JCS_HAS_ERROR;
     }

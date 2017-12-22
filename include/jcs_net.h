@@ -21,6 +21,15 @@
 #define SOCKET_ERROR -1
 #endif
 
+/**
+ * @enum JCS_PROTOCAL_TYPE
+ * @breif Protocal type.
+ */
+enum JCS_PROTOCAL_TYPE {
+    TCP = 0x01,
+    UDP = 0x02
+};
+typedef enum JCS_PROTOCAL_TYPE JCS_PROTOCAL_TYPE;
 
 /**
  * @func jcs_is_valid_ip_address
@@ -34,6 +43,7 @@ bool jcs_is_valid_ip_address(const char *ip_addr);
  * @func jcs_create_server
  * @brief Build the server socket.
  * @param { int } port : port number.
+ * @param { JCS_PROTOCAL_TYPE } prot_type : protocal type.
  * @param { bool } nio : non-blocking IO?
  * @param { int } max_con : maxinum connections.
  * @return { int } : socket descriptor.
@@ -45,13 +55,17 @@ bool jcs_is_valid_ip_address(const char *ip_addr);
  * close(sockfd);  /\* clsoe it. *\/
  * @end_code
  */
-int jcs_create_server(const int port, bool nio, const int max_con);
+int jcs_create_server(const int port,
+                      JCS_PROTOCAL_TYPE prot_type,
+                      bool nio,
+                      const int max_con);
 
 /**
  * @func jcs_create_client
  * @brief Build the server socket.
  * @param { char } hostname : host name / internet protocol.
  * @param { int } port : port number.
+ * @param { JCS_PROTOCAL_TYPE } prot_type : protocal type.
  * @return { int } : socket descriptor.
  *
  * @attention socket descriptor need to be close after using it.
@@ -62,7 +76,9 @@ int jcs_create_server(const int port, bool nio, const int max_con);
  * close(sockfd);  /\* clsoe it. *\/
  * @end_code
  */
-int jcs_create_client(const char* hostname, const int port);
+int jcs_create_client(const char* hostname,
+                      const int port,
+                      JCS_PROTOCAL_TYPE prot_type);
 
 /**
  * @func jcs_accept
