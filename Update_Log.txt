@@ -8,6 +8,10 @@
 # ========================================================================
 
 
+2017-12-22
+* Make usage of different network protocal. (libc-jcs)
+* Remove pack operations from build and move to pack scripts. (libc-jcs)
+
 2017-12-21
 * Add JCSSH package. (libc-jcs)
 
