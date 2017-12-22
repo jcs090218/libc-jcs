@@ -30,11 +30,9 @@ int main(int argc, char *argv[]) {
 
     while (true) {
         int clientfd;
-        struct sockaddr_in client_addr;
-        int addrlen = sizeof(client_addr);
 
         /* Wait and Accept connection */
-        clientfd = accept(server_fd, (struct sockaddr*)&client_addr, &addrlen);
+        clientfd = jcs_accept(server_fd);
 
         /* Send message */
         send(clientfd, buffer, sizeof(buffer), 0);
