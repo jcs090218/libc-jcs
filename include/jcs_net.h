@@ -48,7 +48,7 @@ bool jcs_is_valid_ip_address(const char *ip_addr);
 int jcs_create_server(const int port, bool nio, const int max_con);
 
 /**
- * @func jcs_socket_client
+ * @func jcs_create_client
  * @brief Build the server socket.
  * @param { char } hostname : host name / internet protocol.
  * @param { int } port : port number.
@@ -64,5 +64,12 @@ int jcs_create_server(const int port, bool nio, const int max_con);
  */
 int jcs_create_client(const char* hostname, const int port);
 
+/**
+ * @func jcs_accept
+ * @brief Simple accept connection.
+ * @param { int } serverfd : Server socket descriptor.
+ * @return { int } : client socket descriptor.
+ */
+int jcs_accept(int serverfd);
 
 #endif /* __JCS_NET_H__ */
