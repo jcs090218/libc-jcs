@@ -11,6 +11,19 @@
 
 
 /**
+ * @enum JCS_PROTOCAL_TYPE
+ * @breif Protocal type.
+ */
+enum JCS_PROTOCAL_TYPE {
+    TCP = 0x01,
+    UDP = 0x02
+};
+typedef enum JCS_PROTOCAL_TYPE JCS_PROTOCAL_TYPE;
+
+PRIVATE int jcs_create_socket(JCS_PROTOCAL_TYPE type);
+
+
+/**
  * @func jcs_is_valid_ip_address
  * @brief Check if the ip address valid format.
  * @param { char } ip_addr : ip address.
@@ -45,7 +58,7 @@ int jcs_create_server(const int port, bool nio, const int max_con) {
     int opt = 1;
 
     /* Creating socket file descriptor. */
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+    if ((sockfd = jcs_create_socket(TCP)) == 0) {
         jcs_error("Failed to create socket..");
         return JCS_HAS_ERROR;
     }
@@ -100,7 +113,7 @@ int jcs_create_server(const int port, bool nio, const int max_con) {
 }
 
 /**
- * @func jcs_socket_client
+ * @func jcs_create_client
  * @brief Build the server socket.
  * @param { char } hostname : host name / internet protocol.
  * @param { int } port : port number.
@@ -118,7 +131,7 @@ int jcs_create_client(const char* hostname, const int port) {
     int sockfd;
     struct sockaddr_in dest;
 
-    if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    if ((sockfd = jcs_create_socket(TCP)) < 0) {
         jcs_error("Failed to create socket..");
         return JCS_HAS_ERROR;
     }
@@ -143,4 +156,38 @@ int jcs_create_client(const char* hostname, const int port) {
 
     jcs_log("Make connection.. %s:%d", hostname, port);
     return sockfd;
+}
+
+/**
+ * @func jcs_accept
+ * @brief Simple accept connection.
+ * @param { int } serverfd : Server socket descriptor.
+ * @return { int } : client socket descriptor.
+ */
+int jcs_accept(int serverfd) {
+    int clientfd;
+    struct sockaddr_in client_addr;
+    int addrlen = sizeof(client_addr);
+
+    clientfd = accept(serverfd,
+                      (struct sockaddr*)&client_addr,
+                      &addrlen);
+    return clientfd;
+}
+
+
+/**
+ * @func jcs_create_socket
+ * @brief Create a socket depends on protocal type.
+ * @param { bool } udp : Is udp?
+ * @return { int } : socket descriptor just created.
+ */
+PRIVATE int jcs_create_socket(JCS_PROTOCAL_TYPE type) {
+    if (type == TCP)
+        return socket(AF_INET, SOCK_STREAM, 0);
+    else if (type == UDP)
+        return socket(AF_INET, SOCK_DGRAM, 0);
+
+    /* Return NULL ref. */
+    return 0;
 }
