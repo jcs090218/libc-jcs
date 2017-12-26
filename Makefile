@@ -28,7 +28,14 @@
 # └── test
 #----------------------------------------------
 
-### General ###
+# ----------------------------------------------- #
+#					  Functions
+# ----------------------------------------------- #
+rwildcard = $(foreach d,$(wildcard $(addsuffix *,$(1))),$(call rwildcard,$(d)/,$(2)) $(filter $(subst *,%,$(2)),$(d)))
+
+# ----------------------------------------------- #
+#					   General
+# ----------------------------------------------- #
 # version number
 VER		   = 1.0.1
 ROOT_DIR   = .
@@ -36,7 +43,9 @@ ROOT_DIR   = .
 # link, executable, etc.
 BIN_NAME = libc-jcs
 
-### Directories ###
+# ----------------------------------------------- #
+#					 Directories
+# ----------------------------------------------- #
 # Build executable directory.
 BIN_DIR = $(ROOT_DIR)/build/bin
 # Build library directory.
@@ -44,7 +53,9 @@ ALIB_DIR = $(ROOT_DIR)/build/alib
 # Build library directory.
 SOLIB_DIR = $(ROOT_DIR)/build/solib
 
-### Commands ###
+# ----------------------------------------------- #
+#					   Commands
+# ----------------------------------------------- #
 # assembler type
 ASM	 = nasm
 # disassembler commands
@@ -56,7 +67,9 @@ LD	 = ld
 # compile lib file commands
 AR	 = ar
 
-### Flags ##
+# ----------------------------------------------- #
+#					   Flags
+# ----------------------------------------------- #
 # assemble flags
 ASM_FLAGS	  =
 # disassemble flags
@@ -80,36 +93,50 @@ ALIB  = libc-jcs.a
 # dynamic link library
 SOLIB = libc-jcs.so
 
-### Source Path ###
+# ----------------------------------------------- #
+#				   Source Path
+# ----------------------------------------------- #
 MAIN_PATH		= $(ROOT_DIR)/test
 SOURCE_PATH		= $(ROOT_DIR)/src
 
-### Include Path ###
+# ----------------------------------------------- #
+#				   Include Path
+# ----------------------------------------------- #
 INCLUDE_PATH   = $(ROOT_DIR)/include
 INCLUDE_PATHS  = $(wildcard $(INCLUDE_PATH)/*)
 
-### Library path ###
+# ----------------------------------------------- #
+#				   Library path
+# ----------------------------------------------- #
 A_LIB_PATH	 = $(ROOT_DIR)/lib/alib
 A_LIB_PATHS = $(wildcard $(A_LIB_PATH)/*)
 
 SO_LIB_PATH	 := $(ROOT_DIR)/lib/solib
 SO_LIB_PATHS := $(wildcard $(SO_LIB_PATH)/*)
 
-### All Source ###
+# ----------------------------------------------- #
+#					All Source
+# ----------------------------------------------- #
 # main source
-MAINSRC := $(wildcard $(MAIN_PATH)/*.asm $(MAIN_PATH)/*.c $(MAIN_PATH)/*.cpp)
+MAINSRC := $(sort $(call rwildcard, $(MAIN_PATH)/, *.asm *.c *.cpp))
 # asm source
-ASMSRC	:= $(wildcard $(SOURCE_PATH)/*.asm)
+ASMSRC	:= $(sort $(call rwildcard, $(SOURCE_PATH)/, *.asm *.inc))
 # c/c++ source
-GSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp)
+GSRC	:= $(sort $(call rwildcard, $(SOURCE_PATH)/, *.c *.cpp))
 # static link library source
-ASRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(A_LIB_PATH)/*.c $(A_LIB_PATH)/*.cpp)
+ASRC	:= $(sort $(call rwildcard, $(SOURCE_PATH)/, *.c *.cpp)) \
+		   $(sort $(call rwildcard, $(A_LIB_PATH)/, *.c *.cpp))
 # shared link library source
-SOSRC	:= $(wildcard $(SOURCE_PATH)/*.c $(SOURCE_PATH)/*.cpp $(SO_LIB_PATH)/*.c $(SO_LIB_PATH)/*.cpp)
+SOSRC	:= $(sort $(call rwildcard, $(SOURCE_PATH), *.c *.cpp)) \
+		   $(sort $(call rwildcard, $(SO_LIB_PATH)/, *.c *.cpp))
 
-### objs ###
+# ----------------------------------------------- #
+#					   objs
+# ----------------------------------------------- #
 # main object file
 MAINOBJ := $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(MAINSRC)))
+# asm object files
+ASMOBJS := $(sort $(patsubst %.asm,%.o, $(patsubst %.inc,%.o, $(ASMSRC))))
 # list of object files
 OBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(GSRC)))
 # .a object files
@@ -117,10 +144,9 @@ AOBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(ASRC)))
 # .so object files
 SOOBJS	:= $(patsubst %.c,%.o, $(patsubst %.cpp,%.o, $(SOSRC)))
 
-### ASM objs ###
-ASMOBJS := $(subst .asm,.o,$(ASMSRC))
-
-### Dependencies ###
+# ----------------------------------------------- #
+#					Dependencies
+# ----------------------------------------------- #
 DEPDIR := $(ROOT_DIR)/mkdepGDEP	  := $(patsubst %.c,$(DEPDIR)/%.d,$(patsubst %.cpp,$(DEPDIR)/%.d, $(GSRC)))
 ASMDEP := $(patsubst %.asm,$(DEPDIR)/%.d,$(ASMSRC))
 
