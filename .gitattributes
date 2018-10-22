@@ -1,2 +1,8 @@
+# Autodetect text files
+* text=auto
+
 *.c diff=cpp
 *.h diff=cpp
+
+# Unix-like line endings
+*.sh text eol=lf
