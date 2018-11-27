@@ -39,4 +39,3 @@ echo
 echo
 # Build dynamic library.
 make libc-jcs.so
-
