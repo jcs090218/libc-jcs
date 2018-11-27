@@ -83,7 +83,7 @@ INCLUDE_FLAGS = -I
 # static link flags
 AR_FLAGS	  = rcs
 # dynamic link flags
-SOR_FLAGS	  = -shared
+SOR_FLAGS	  = -shared -fPIC
 # output flags
 OUTPUT_FLAGS  = -o
 
