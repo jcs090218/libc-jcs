@@ -14,6 +14,14 @@ if ! [[ -n "$TRAVIS" ]]; then
     cd ..
 fi
 
+# Make the build layout.
+mkdir build
+cd build
+mkdir alib
+mkdir bin
+mkdir solib
+cd ..
+
 # clean before build.
 make realclean
 
