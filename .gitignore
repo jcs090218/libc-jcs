@@ -6,7 +6,6 @@
 /build
 
 # generated files.
-.*
 *.a
 *.bin
 *.bz2
