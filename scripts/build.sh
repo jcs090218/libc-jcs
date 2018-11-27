@@ -12,7 +12,7 @@
 # Back to project root directory.
 if ! [[ -n "$TRAVIS" ]]; then
     cd ..
-if
+fi
 
 # clean before build.
 make realclean
