@@ -75,7 +75,7 @@ ASM_FLAGS	  =
 # disassemble flags
 DASM_FLAGS	  = -D
 # compile flags
-C_FLAGS		  = -lcurl
+C_FLAGS		  = -lcurl -fPIC
 # linker flags
 LD_FLAGS	  = -L
 # include flags
@@ -83,7 +83,7 @@ INCLUDE_FLAGS = -I
 # static link flags
 AR_FLAGS	  = rcs
 # dynamic link flags
-SOR_FLAGS	  = -shared -fPIC
+SOR_FLAGS	  = -shared
 # output flags
 OUTPUT_FLAGS  = -o
 
